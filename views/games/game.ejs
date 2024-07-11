@@ -1,0 +1,70 @@
+<!-- views/games/game.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= producto.nombre %></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Color de fondo de la página */
+            margin: 0;
+            padding: 0;
+        }
+
+        .game-details {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .game-details img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .game-details h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .game-details p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .game-details button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .game-details button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-details">
+        <img src="<%= producto.imagen %>" alt="<%= producto.nombre %>">
+        <h1><%= producto.nombre %></h1>
+        <p><%= producto.descripcion %></p>
+        <p>Precio: $<%= producto.precio %></p>
+        <p>Categoría: <%= producto.categoria %></p>
+        <form action="/carrito" method="POST">
+            <input type="hidden" name="id" value="<%= producto.id %>">
+            <button type="submit">Añadir al carrito</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+@import "./fonts.css";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1d1d1d;
+  font-family: "League Spartan Variable", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Nav Container  */
+.nav-container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  padding-inline: 40px;
+  display: flex;
+  position: absolute;
+  background: transparent;
+}
+
+/* Nav Container -> Interactive Nav -> Logo Container */
+.logo-container {
+  display: flex;
+  gap: 10px;
+}
+
+.easy-logo {
+  color: #fff;
+  font-weight: 400;
+  font-size: 36px;
+}
+
+.gaming-logo {
+  color: #d30404;
+  font-weight: 400;
+  font-size: 36px;
+}
+
+/* MAIN */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  min-height: 100dvh;
+}
+
+/* MAIN -> Left Side */
+.left-side {
+  background-color: #1d1d1d;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px;
+}
+
+form .form-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 24px;
+}
+
+input {
+  background-color: #272727;
+  color: gray;
+  border: 2px solid #505050;
+  padding-bottom: 18px;
+  padding-top: 18px;
+  padding-inline: 18px;
+  border-radius: 8px;
+  font-weight: 300;
+  font-size: larger;
+  outline-style: none;
+  &:hover {
+    border: 2px solid #880000;
+  }
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 24px;
+}
+
+.register-container p {
+  color: #505050;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.btn-container {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 24px;
+}
+
+.btn-container button {
+  width: 100%;
+  cursor: pointer;
+  color: #fff;
+  padding-top: 18px;
+  font-weight: 600;
+  font-size: medium;
+  padding-bottom: 18px;
+  border-radius: 12px;
+  border: none;
+  background: #bd2525;
+
+  &:hover {
+    background-color: #880000;
+    transition: 0.3s ease-in-out;
+  }
+}
+
+.btn-container a {
+  color: rgb(209, 209, 209);
+  font-size: large;
+
+  &:hover {
+    color: #bd2525;
+  }
+}
+
+.terms-policy {
+  color: #880000;
+  text-decoration: underline;
+}
+
+/* MAIN -> Right Side */
+.right-side {
+  background-image: url("../public/imgs/register-img.jpg");
+  background-position: top;
+  background-size: cover;
+  bottom: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 50%;
+}
+
+/* SM */
+@media (max-width: 480px) {
+  main {
+    display: flex;
+  }
+  .left-side {
+    z-index: 20;
+  }
+  form {
+    margin-top: 72px;
+  }
+  form .form-inputs {
+    margin: 0;
+  }
+  .right-side {
+    position: relative;
+  }
+}

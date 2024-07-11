@@ -1,0 +1,324 @@
+@import './fonts.css';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #1D1D1D !important;
+    font-family: 'League Spartan Variable', sans-serif;
+}
+
+.logo-container,
+.aside-nav-container a,
+.nav-container-categories a {
+    text-decoration: none;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* -> Header -> Aside */
+aside {
+    font-weight: 300;
+    color: #fff;
+    padding: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+/* -> Header -> Secondary Nav */
+.secondary-navbar {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aside-nav-container a {
+    margin-left: 24px;
+    color: #FFFFFF;
+    font-weight: 100;
+}
+
+.aside-nav-container a:hover {
+    opacity: 0.8;
+}
+
+/* -> Header ->  Nav Container  */
+.nav-container {
+    margin-top: 20px;
+    width: 100%;
+    padding-inline: 20px;
+}
+
+/* -> Header -> Nav Container -> Interactive Nav */
+.interactive-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* -> Header -> Nav Container -> Interactive Nav -> Logo Container */
+.logo-container {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.easy-logo {
+    color: #fff;
+    font-weight: 400;
+    font-size: 36px;
+}
+
+.gaming-logo {
+    color: #D30404;
+    font-weight: 400;
+    font-size: 36px;
+}
+
+/* -> Header -> Nav Container -> Interactive Nav -> Search Container */
+.search-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-container label {
+    position: relative;
+    left: 36px;
+    top: 6px;
+}
+
+.search-container input {
+    width: 90%;
+    padding: 10px 0px 10px 50px;
+    user-select: none;
+    outline: none;
+    border-radius: 1.225rem;
+    border: none;
+}
+
+/* -> Header -> Nav Container -> Interactive Nav -> Icons Logo Container */
+.icons-logos {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-inline: 54px;
+}
+
+.icons-logos>* {
+    border: 1px solid #272727;
+    padding: 8px 12px 8px 12px;
+    border-radius: 12px;
+}
+
+.icons-logos>*:hover {
+    transition: ease-in-out 100ms;
+    transform: scale(120%);
+}
+
+
+/* -> Header -> Nav Category */
+
+.nav-category-container {
+    margin: 32px 0px 32px 0px;
+}
+
+.nav-category-container nav {
+    display: flex;
+}
+
+.nav-category-container .nav-container-categories a {
+    display: flex;
+    gap: 8px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-inline: 24px;
+
+    &:hover {
+        border-bottom: 1px solid #D30404;
+        transition: all 300ms ease-in;
+    }
+}
+
+
+
+.nav-category-container .nav-container-categories a svg {
+    margin-top: 2px;
+}
+
+
+/* MAIN SECTION -> main-img*/
+.img-container {
+    position: relative;
+    display: flex;
+}
+
+.wallpaper-carousel {
+    max-height: 620px;
+    min-height: 620px;
+    object-fit: cover;
+}
+
+.main-img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.main-text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 14rem;
+    right: 0;
+    font-size: 36px;
+    color: #FFFFFF;
+}
+
+.main-text div {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.main-text .date-text {
+    font-weight: 300;
+    font-size: medium;
+    background-color: #ffffff1f;
+    width: fit-content;
+    padding: 3px 6px 3px 6px;
+    border-radius: 8px;
+}
+
+.main-text p {
+    background: #D30404;
+    padding: 5px 6px 6px 7px;
+    font-size: x-large;
+    width: 6%;
+    text-align: center;
+    border-radius: 5px 24px 0;
+    margin-right: 12px;
+}
+
+.main-text span {
+    font-weight: 500;
+    margin-bottom: 12px;
+    font-size: xx-large;
+}
+
+
+
+/* Responsive */
+/* XL */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+    /* slider */
+    .wallpaper-carousel {
+        max-height: 320px;
+    }
+
+    .main-text p {
+        width: 10%;
+    }
+}
+
+/* MD */
+@media (min-width: 481px) and (max-width: 768px) {
+
+    /* Nav logo */
+    .logo-container h1 {
+        font-size: 24px
+    }
+
+    /* slider */
+    .wallpaper-carousel {
+        max-height: 240px;
+    }
+
+    .main-text p {
+        width: 14%;
+    }
+
+    .main-text {
+        left: 8rem;
+    }
+}
+
+/* SM */
+@media (max-width: 480px) {
+
+    /* aside */
+    aside {
+        text-align: center;
+    }
+
+    .secondary-navbar .aside-nav-container {
+        text-align: center;
+        padding-inline: 12px;
+    }
+
+    /* navbar */
+    .secondary-navbar .aside-nav-container a {
+        margin-left: 8px;
+        font-size: smaller;
+    }
+
+    .nav-container-categories {
+        justify-content: center;
+        column-gap: 12px;
+    }
+
+    .nav-container-categories a {
+        margin-inline: 4px !important;
+        font-size: 12px;
+    }
+
+    .nav-container-categories a p {
+        margin-top: 2px;
+    }
+
+    /* navlogo */
+    .interactive-nav {
+        flex-direction: column;
+        row-gap: 24px;
+    }
+
+    /* slider */
+    .wallpaper-carousel {
+        height: 425px;
+    }
+
+    .carousel .carousel-inner .carousel-item img {
+        opacity: 20;
+    }
+
+    .main-text p {
+        width: 24%;
+    }
+
+    .main-text {
+        left: 5rem;
+    }
+
+    .main-text .date-text {
+        font-size: small;
+        padding-inline: 4px;
+    }
+}

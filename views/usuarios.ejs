@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Lista de Usuarios</h1>
+        <a href="/usuarios/crear" class="btn btn-primary mb-3">Crear Nuevo Usuario</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="usuarios-lista">
+                <% usuarios.forEach(usuario => { %>
+                    <tr id="usuario-<%= usuario.id %>">
+                        <td><%= usuario.nombre %></td>
+                        <td><%= usuario.apellido %></td>
+                        <td><%= usuario.username %></td>
+                        <td>
+                            <button class="btn btn-danger eliminar-usuario" data-id="<%= usuario.id %>">Eliminar</button>
+                            <form method="GET" action="/usuarios/<%= usuario.id %>/edit" style="display: inline;">
+                                <button type="submit" class="btn btn-primary ms-2">Editar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.querySelectorAll('.eliminar-usuario').forEach(button => {
+            button.addEventListener('click', async function(event) {
+                event.preventDefault();
+                const userId = this.getAttribute('data-id');
+                try {
+                    await axios.delete(`/usuarios/${userId}`);
+                    document.getElementById(`usuario-${userId}`).remove();
+                } catch (error) {
+                    console.error(`Error deleting usuario ${userId}:`, error);
+                    alert(`Error al eliminar usuario ${userId}`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
