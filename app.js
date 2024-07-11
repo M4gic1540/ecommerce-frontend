@@ -3,8 +3,11 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 const path = require('path');
+const axios = require('axios');
 const app = express();
+const port = process.env.PORT || 3000;
 
+// Middlewares
 app.use(bodyParser.json()); // Para manejar solicitudes JSON
 app.use(bodyParser.urlencoded({ extended: true })); // Para manejar solicitudes de formularios
 app.use(methodOverride('_method'));
@@ -27,7 +30,6 @@ const playstationRouter = require('./routes/playstation');
 const pcRouter = require('./routes/pc');
 const gameRouter = require('./routes/game');
 
-
 // Usar rutas
 app.use('/', HomeRouter);
 app.use('/productos', productosRouter);
@@ -40,34 +42,37 @@ app.use('/playstation', playstationRouter);
 app.use('/pc', pcRouter);
 app.use('/game', gameRouter);
 
-
 // Rutas Backend de las APIs
-const apiBaseUrl = 'http://127.0.0.1:8000/api/usuario/usuarios/';
-const apiBaseUrl2 = 'http://127.0.0.1:8000/api/productos/productos/';
-const apiBaseUrl3 = 'http://127.0.0.1:8000/api/productos/categorias/';
-const apiBaseUrl4 = 'http://127.0.0.1:8000/api/carrito/carritos/';
-const apiBaseUrl5 = 'http://127.0.0.1:8000/api/usuario/login';
-
+const apiBaseUrl = process.env.BACKEND_API_URL || 'http://127.0.0.1:8000/api';
+const apiUrls = {
+    usuarios: `${apiBaseUrl}/usuario/usuarios/`,
+    productos: `${apiBaseUrl}/productos/productos/`,
+    categorias: `${apiBaseUrl}/productos/categorias/`,
+    carritos: `${apiBaseUrl}/carrito/carritos/`,
+    login: `${apiBaseUrl}/usuario/login`
+};
 
 // Rutas frontend
-const frontendBaseUrl = 'http://localhost:3000/usuarios/';
-const frontendBaseUrl2 = 'http://localhost:3000/productos/';
-const frontendBaseUrl3 = 'http://localhost:3000/categorias/';
-const frontendBaseUrl4 = 'http://localhost:3000/carrito/';
-const frontendBaseUrl5 = 'http://localhost:3000/login/';
+const frontendBaseUrl = process.env.FRONTEND_BASE_URL || 'http://localhost:3000';
+const frontendUrls = {
+    usuarios: `${frontendBaseUrl}/usuarios/`,
+    productos: `${frontendBaseUrl}/productos/`,
+    categorias: `${frontendBaseUrl}/categorias/`,
+    carritos: `${frontendBaseUrl}/carrito/`,
+    login: `${frontendBaseUrl}/login/`
+};
 
-
-app.listen(3000, () => {
-    console.log('\n Servidor ejecutándose Frontend en http://localhost:3000');
-    console.log(`Ruta Frontend de usuarios: ${frontendBaseUrl}`);
-    console.log(`Ruta Frontend de productos: ${frontendBaseUrl2}`);
-    console.log(`Ruta Frontend de categorias: ${frontendBaseUrl3}`);
-    console.log(`Ruta Frontend de carritos: ${frontendBaseUrl4}`);
-    console.log(`Ruta Frontend de login: ${frontendBaseUrl5}`);
-    console.log('\n Servidor ejecutándose Backend en http://127.0.0.1:8000');
-    console.log(`Ruta Backend de API de usuarios: ${apiBaseUrl}`);
-    console.log(`Ruta Backend de API de productos: ${apiBaseUrl2}`);
-    console.log(`Ruta Backend de API de categorias: ${apiBaseUrl3}`);
-    console.log(`Ruta Backend de API de carritos: ${apiBaseUrl4}`);
-    console.log(`Ruta Backend de API de login: ${apiBaseUrl5}`);
+app.listen(port, () => {
+    console.log(`\n Servidor ejecutándose Frontend en ${frontendBaseUrl}`);
+    console.log(`Ruta Frontend de usuarios: ${frontendUrls.usuarios}`);
+    console.log(`Ruta Frontend de productos: ${frontendUrls.productos}`);
+    console.log(`Ruta Frontend de categorías: ${frontendUrls.categorias}`);
+    console.log(`Ruta Frontend de carritos: ${frontendUrls.carritos}`);
+    console.log(`Ruta Frontend de login: ${frontendUrls.login}`);
+    console.log(`\n Servidor ejecutándose Backend en ${apiBaseUrl}`);
+    console.log(`Ruta Backend de API de usuarios: ${apiUrls.usuarios}`);
+    console.log(`Ruta Backend de API de productos: ${apiUrls.productos}`);
+    console.log(`Ruta Backend de API de categorías: ${apiUrls.categorias}`);
+    console.log(`Ruta Backend de API de carritos: ${apiUrls.carritos}`);
+    console.log(`Ruta Backend de API de login: ${apiUrls.login}`);
 });
